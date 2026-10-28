@@ -1,3 +1,2 @@
--- Neovim loads this file first.
--- Keep this file small and use it only to load your modular config.
-require("jordin")
+-- bootstrap lazy.nvim, LazyVim and your plugins
+require("config.lazy")

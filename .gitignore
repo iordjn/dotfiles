@@ -1,0 +1,15 @@
+# Ignore private or machine-specific configuration
+cagent/
+
+# macOS
+.DS_Store
+
+# Neovim temporary files
+*.swp
+*.swo
+*.swn
+
+# Local environment and secrets
+.env
+.env.*
+

@@ -10,7 +10,7 @@ return {
     -- Lazy loading is not recommended because it is very tricky to make it work correctly in all situations.
     lazy = false,
     keys = {
-      { "-", "<cmd>Oil<cr>", desc = "Open parent directory" },
+      { "<leader>o", "<cmd>Oil<cr>", desc = "Open Oil file manager" },
     },
   },
 }

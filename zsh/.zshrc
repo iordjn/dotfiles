@@ -65,6 +65,10 @@ alias lab='cd ~/Dev/SCSU/CSCI201/'
 # Reload Zsh configuration
 alias src='source ~/.zshrc'
 
+# Make Virtual Environment and Source Virtual Environment
+alias mkvenv='python3 -m venv .venv'
+alias venv='source .venv/bin/activate'
+
 
 # Private settings stay outside the dotfiles repository.
 [[ ! -r "$HOME/.zshrc.local" ]] || source "$HOME/.zshrc.local"

@@ -13,10 +13,12 @@ roots=()
 
 # A limited search depth prevents the menu filling up with build outputs.
 selected=$(
-  fd --type d --hidden --max-depth 4 \
-    --exclude .git --exclude node_modules --exclude .venv \
-    --exclude build --exclude .next --exclude target \
-    . "${roots[@]}" |
+  for root in "${roots[@]}"; do
+    fd --type d --hidden --max-depth 4 \
+      --exclude .git --exclude node_modules --exclude .venv \
+      --exclude build --exclude .next --exclude target \
+      . "$root"
+  done |
     sed "s|^$HOME/||" |
     sk --reverse --height=100% --prompt="Project > "
 ) || exit 0

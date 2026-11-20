@@ -55,6 +55,20 @@ fi
 
 eval "$(zoxide init zsh)"
 
+# Fuzzy project picker
+cproj() {
+  local dir
+
+  dir=$(fd --type d --hidden \
+    --exclude .git \
+    --exclude node_modules \
+    --exclude .venv \
+    . "$HOME/Dev" | fzf --height=80% \
+                       --layout=reverse \
+                       --border)
+
+  [[ -n "$dir" ]] && cd "$dir"
+}
 
 # ==========================================
 # Aliases

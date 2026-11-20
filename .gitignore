@@ -2,9 +2,13 @@
 /*
 !/.gitignore
 !/README.md
+!/AGENTS.md
 !/ghostty/
 !/nvim/
 !/zsh/
+
+# Local configuration documentation.
+/doc/
 
 # Private or machine-specific files, even inside allowed directories.
 *.local

@@ -4,6 +4,8 @@
 !/README.md
 !/ghostty/
 !/nvim/
+!/tmux/
+!/scripts/
 !/zsh/
 
 # Private or machine-specific files, even inside allowed directories.

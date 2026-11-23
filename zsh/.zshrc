@@ -55,19 +55,27 @@ fi
 
 eval "$(zoxide init zsh)"
 
-# Fuzzy project picker
-cproj() {
-  local dir
+# Fuzzy project picker (Ghostty-compatible, no tmux required)
+proj() {
+  if ! command -v fd >/dev/null || ! command -v sk >/dev/null; then
+    print -u2 "Project picker needs fd and sk: brew install fd sk"
+    return 1
+  fi
 
-  dir=$(fd --type d --hidden \
-    --exclude .git \
-    --exclude node_modules \
-    --exclude .venv \
-    . "$HOME/Dev" | fzf --height=80% \
-                       --layout=reverse \
-                       --border)
+  local directory
+  directory=$(
+    {
+      if [[ -d "$HOME/Dev" ]]; then
+        fd --type d --hidden --max-depth 5 \
+          --exclude .git --exclude node_modules --exclude .venv \
+          --exclude build --exclude .next --exclude target \
+          . "$HOME/Dev"
+      fi
+      [[ -d "$HOME/.config" ]] && print -r -- "$HOME/.config"
+    } | sk --reverse --height=80% --prompt="Project > "
+  ) || return
 
-  [[ -n "$dir" ]] && cd "$dir"
+  [[ -n "$directory" ]] && cd -- "$directory"
 }
 
 # ==========================================
@@ -77,6 +85,7 @@ cproj() {
 # Short-Cuts
 alias vim='nvim'
 alias im='nvim'
+alias lg='lazygit'
 
 # Projects
 alias tareek='cd ~/Dev/SCSU/tareek/TAREEK'

@@ -74,6 +74,10 @@ cproj() {
 # Aliases
 # ==========================================
 
+# Short-Cuts
+alias vim='nvim'
+alias im='nvim'
+
 # Projects
 alias tareek='cd ~/Dev/SCSU/tareek/TAREEK'
 alias lab='cd ~/Dev/SCSU/CSCI201/'
